@@ -51,6 +51,13 @@
        font-size:16px;padding:15px;border-radius:14px;letter-spacing:.5px}
   .btn:active{transform:scale(.985)}
   .meta{margin-top:16px;color:var(--muted);font-size:12.5px}
+  /* 演示视频：竖屏 480x1056，用高度驱动 + aspect-ratio 定宽，
+     这样即使还没加载出元数据，盒子尺寸也不会跳。object-fit:contain 保证不裁切。 */
+  .video-wrap{display:flex;justify-content:center;margin-top:14px}
+  .demo-video{height:min(72vh,620px);aspect-ratio:480/1056;width:auto;max-width:100%;
+              border-radius:14px;background:#000;object-fit:contain;
+              box-shadow:0 10px 30px rgba(0,0,0,.38);outline:none}
+  .video-meta{margin:12px 0 0;color:var(--muted);font-size:12.5px;text-align:center}
   details{background:rgba(255,255,255,.05);border:1px solid var(--line);
           border-radius:14px;padding:0 16px;margin-bottom:10px}
   summary{cursor:pointer;padding:15px 0;font-size:15px;list-style:none}
@@ -60,7 +67,9 @@
   details p{color:var(--muted);font-size:14px;margin:0 0 15px}
   footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:12.5px;text-align:center}
   footer p{margin:0 0 8px}
-  @media (max-width:380px){h1{font-size:26px}.qr{width:160px;height:160px}}
+  @media (max-width:560px){.demo-video{height:min(64vh,540px)}}
+  @media (max-width:380px){h1{font-size:26px}.qr{width:160px;height:160px}
+                           .demo-video{height:min(56vh,440px)}}
 </style>
 </head>
 <body>
@@ -79,6 +88,19 @@
 </header>
 
 <div class="wrap">
+
+  <section>
+    <h2>3 分钟看懂怎么用</h2>
+    <p class="sub">悬浮窗、拍照识别、离线题库 —— 跟着演示走一遍就会。</p>
+    <div class="video-wrap">
+      <video class="demo-video" controls playsinline preload="metadata"
+             controlslist="nodownload" aria-label="木木答题 使用演示">
+        <source src="https://mumu-dati.app.workbuddy.host/how-to-use.mp4" type="video/mp4">
+        你的浏览器不支持内嵌视频，请<a href="https://mumu-dati.app.workbuddy.host/how-to-use.mp4" style="color:var(--brand)">点这里直接观看</a>。
+      </video>
+    </div>
+    <p class="video-meta">首次播放需要联网缓冲几秒；点右下角图标可全屏观看。</p>
+  </section>
 
   <section>
     <h2>能帮你做什么</h2>
