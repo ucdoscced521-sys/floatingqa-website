@@ -4,157 +4,327 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>木木答题 · 安全培训随身题库</title>
-<meta name="description" content="木木答题：面向企业安全培训的随身题库。悬浮窗随时练、拍照识别题目看解析、离线题库不断网也能用。Android 版安装包 1.9.66，16.4 MB。">
+<meta name="description" content="木木答题：面向企业安全培训的随身题库。悬浮窗随时练、拍照识别题目看解析、离线题库不断网也能用。Android 版安装包 1.9.67，16.4 MB。">
 <meta property="og:title" content="木木答题 · 安全培训随身题库">
-<meta property="og:description" content="悬浮窗随时练 / 拍照识别题目看解析 / 离线题库。Android 版 1.9.66 下载。">
+<meta property="og:description" content="悬浮窗随时练 / 拍照识别题目看解析 / 离线题库。Android 版 1.9.67 下载。">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#21005D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%236750A4'/%3E%3Cpath d='M18 33.5l9.5 9.5L46 24' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
-  :root{--bg:#21005D;--deep:#4F378B;--brand:#6750A4;--line:rgba(234,221,255,.18);
-        --text:#fff;--muted:rgba(255,255,255,.72);--chip:rgba(234,221,255,.12)}
+  :root{
+    --bg:#1B004B; --bg2:#21005D; --brand:#6750A4; --brand-lt:#9A82DB;
+    --line:rgba(234,221,255,.16); --line2:rgba(234,221,255,.30);
+    --text:#fff; --muted:rgba(255,255,255,.70); --chip:rgba(234,221,255,.10);
+    --card:rgba(255,255,255,.045);
+    --r-lg:20px; --r-md:16px;
+    --wrap:1080px; --pad:20px;
+    --shadow:0 18px 44px rgba(0,0,0,.42);
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);
-       font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
-       line-height:1.7;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:640px;margin:0 auto;padding:0 20px}
-  header{background:linear-gradient(160deg,#6750A4 0%,#4F378B 45%,#21005D 100%);
-         padding:56px 0 72px;text-align:center}
-  .logo{width:72px;height:72px;margin:0 auto 18px;border-radius:20px;
-        background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);
-        display:flex;align-items:center;justify-content:center;
-        font-size:30px;font-weight:700;letter-spacing:2px}
-  h1{margin:0 0 10px;font-size:30px;letter-spacing:1px}
-  .tag{margin:0;color:var(--muted);font-size:15px}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;color:var(--text);line-height:1.7;
+       font-family:system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased;
+       background:radial-gradient(1100px 520px at 50% -6%,rgba(103,80,164,.82),rgba(33,0,93,0) 62%),
+                  linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%) no-repeat;
+       background-color:var(--bg)}
+  .wrap{width:min(calc(100% - var(--pad) * 2),var(--wrap));margin-inline:auto}
+  a{color:var(--brand-lt)}
+  :focus-visible{outline:2px solid var(--brand-lt);outline-offset:3px;border-radius:8px}
+
+  /* ---------- 首屏 ---------- */
+  .hero{padding:clamp(48px,9vw,84px) 0 clamp(40px,7vw,60px);text-align:center}
+  .logo{width:76px;height:76px;margin:0 auto 18px;border-radius:22px;
+        background:linear-gradient(160deg,rgba(255,255,255,.20),rgba(255,255,255,.06));
+        border:1px solid rgba(255,255,255,.26);box-shadow:0 10px 26px rgba(0,0,0,.28);
+        display:flex;align-items:center;justify-content:center;font-size:30px;
+        font-weight:700;letter-spacing:2px}
+  h1{margin:0 0 10px;font-size:clamp(28px,5.4vw,40px);letter-spacing:1px;line-height:1.25}
+  .tag{margin:0;color:var(--muted);font-size:clamp(14px,1.7vw,16px)}
   .badges{margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
   .badge{background:var(--chip);border:1px solid var(--line);border-radius:999px;
-         padding:4px 12px;font-size:12.5px;color:var(--text)}
-  section{padding:44px 0}
-  h2{margin:0 0 6px;font-size:20px;display:flex;align-items:center;gap:9px}
-  h2::before{content:"";width:4px;height:18px;border-radius:2px;background:var(--brand)}
-  .sub{color:var(--muted);font-size:13.5px;margin:0 0 22px}
-  .card{background:rgba(255,255,255,.05);border:1px solid var(--line);
-        border-radius:16px;padding:20px;margin-bottom:14px;backdrop-filter:blur(6px)}
-  .card h3{margin:0 0 7px;font-size:16.5px}
+         padding:5px 13px;font-size:12.5px;color:var(--text);white-space:nowrap}
+  .cta{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- 按钮 ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+       background:#fff;color:var(--bg2);text-decoration:none;font-weight:700;
+       font-size:15.5px;padding:14px 26px;border-radius:999px;letter-spacing:.4px;
+       box-shadow:0 10px 26px rgba(0,0,0,.30);
+       transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 15px 34px rgba(0,0,0,.40)}
+  .btn:active{transform:translateY(0) scale(.985)}
+  .btn-ghost{background:rgba(255,255,255,.10);color:var(--text);
+             border:1px solid var(--line2);box-shadow:none}
+  .btn-ghost:hover{background:rgba(255,255,255,.17);box-shadow:none}
+
+  /* ---------- 区块 ---------- */
+  .sec{padding:clamp(34px,5.4vw,62px) 0}
+  .sec-head{margin-bottom:clamp(18px,2.6vw,28px)}
+  h2{margin:0 0 8px;font-size:clamp(19px,2.5vw,24px);letter-spacing:.4px;
+     display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:5px;height:1.02em;border-radius:3px;flex:none;
+             background:linear-gradient(180deg,var(--brand-lt),var(--brand))}
+  .sub{color:var(--muted);font-size:14px;margin:0}
+  .h3{margin:0 0 14px;font-size:17px}
+
+  /* ---------- 卡片 / 网格 ---------- */
+  .grid{display:grid;gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+        padding:20px;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+  .card:hover{transform:translateY(-3px);border-color:var(--line2);background:rgba(255,255,255,.075)}
+  .card h3{margin:0 0 8px;font-size:16.5px;display:flex;align-items:center;gap:9px}
   .card p{margin:0;color:var(--muted);font-size:14px}
-  .num{display:inline-flex;width:21px;height:21px;border-radius:6px;background:var(--brand);
-       font-size:12px;align-items:center;justify-content:center;margin-right:7px;
-       vertical-align:2px;font-weight:700}
-  ul{margin:0;padding-left:20px}
-  li{color:var(--muted);font-size:14.5px;margin-bottom:8px}
-  li::marker{color:var(--brand)}
-  .dl{background:linear-gradient(160deg,rgba(103,80,164,.5),rgba(33,0,93,.6));
-      border:1px solid var(--line);border-radius:18px;padding:28px 20px;text-align:center}
-  .qr{width:186px;height:186px;margin:0 auto 16px;padding:9px;background:#fff;
-      border-radius:14px;display:block}
-  .dl .hint{color:var(--muted);font-size:13px;margin:14px 0 16px}
-  .btn{display:block;background:#fff;color:#21005D;text-decoration:none;font-weight:700;
-       font-size:16px;padding:15px;border-radius:14px;letter-spacing:.5px}
-  .btn:active{transform:scale(.985)}
-  .meta{margin-top:16px;color:var(--muted);font-size:12.5px}
-  /* 演示视频：竖屏 480x1056，用高度驱动 + aspect-ratio 定宽，
-     这样即使还没加载出元数据，盒子尺寸也不会跳。object-fit:contain 保证不裁切。 */
-  .video-wrap{display:flex;justify-content:center;margin-top:14px}
-  .demo-video{height:min(72vh,620px);aspect-ratio:480/1056;width:auto;max-width:100%;
-              border-radius:14px;background:#000;object-fit:contain;
-              box-shadow:0 10px 30px rgba(0,0,0,.38);outline:none}
+  .num{display:inline-flex;width:22px;height:22px;border-radius:7px;flex:none;
+       background:linear-gradient(160deg,var(--brand-lt),var(--brand));
+       font-size:12px;align-items:center;justify-content:center;font-weight:700}
+  @media (min-width:680px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:960px){.grid.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+  ul.notes{margin:0;padding-left:22px}
+  ul.notes li{color:var(--muted);font-size:14.5px;margin-bottom:9px}
+  ul.notes li:last-child{margin-bottom:0}
+  ul.notes li::marker{color:var(--brand-lt)}
+
+  /* ---------- 演示视频 ---------- */
+  /* 竖屏 480x1056：外层 .video-frame 用「高度驱动 + aspect-ratio」定尺寸，
+     里面的 video 元素 100% 填满 —— 这样元数据没加载出来时盒子也不跳，且不会变形。
+     PC 上由左栏宽度与 80vh 两者取小，手机上看 76vh。
+     ⚠️ 注释里别写带尖括号的 video 标签：self_check 是用正则抓标签的，
+        会先匹配到注释里的这一份（没有属性）→ 断言全部误报成「缺少 autoplay」。*/
+  .demo{display:grid;gap:clamp(22px,3vw,38px);align-items:center}
+  @media (min-width:900px){.demo{grid-template-columns:minmax(0,360px) minmax(0,1fr)}}
+  .video-frame{position:relative;margin-inline:auto;background:#000;overflow:hidden;
+               width:min(100%,calc(min(76vh,640px) * 480 / 1056));
+               aspect-ratio:480/1056;border-radius:var(--r-lg);
+               border:1px solid var(--line2);box-shadow:var(--shadow)}
+  @media (min-width:900px){
+    .video-frame{width:min(100%,calc(min(80vh,720px) * 480 / 1056))}
+  }
+  .demo-video{display:block;width:100%;height:100%;object-fit:contain;
+              background:#000;border:0;outline:none}
+  /* 自动播放被浏览器拦掉时才显示（JS 控制 hidden） */
+  .video-fallback{position:absolute;inset:0;margin:0;display:flex;align-items:center;
+                  justify-content:center;text-align:center;padding:22px;
+                  font-size:13.5px;color:var(--text);
+                  background:linear-gradient(180deg,rgba(27,0,75,.70),rgba(27,0,75,.88));
+                  pointer-events:none}
+  .video-fallback[hidden]{display:none}
   .video-meta{margin:12px 0 0;color:var(--muted);font-size:12.5px;text-align:center}
-  details{background:rgba(255,255,255,.05);border:1px solid var(--line);
-          border-radius:14px;padding:0 16px;margin-bottom:10px}
-  summary{cursor:pointer;padding:15px 0;font-size:15px;list-style:none}
+
+  ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  ol.steps li{display:flex;gap:13px;align-items:flex-start;background:var(--card);
+              border:1px solid var(--line);border-radius:var(--r-md);
+              padding:14px 16px;font-size:14px;color:var(--muted)}
+  ol.steps b{display:block;color:var(--text);font-size:15px;margin-bottom:2px;font-weight:600}
+  .step-n{flex:none;width:26px;height:26px;border-radius:9px;
+          background:linear-gradient(160deg,var(--brand-lt),var(--brand));
+          font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- 下载 ---------- */
+  .dl{background:linear-gradient(160deg,rgba(103,80,164,.42),rgba(33,0,93,.64));
+      border:1px solid var(--line2);border-radius:var(--r-lg);
+      padding:clamp(24px,3.4vw,40px);display:grid;gap:clamp(20px,3vw,36px);
+      justify-items:center;text-align:center}
+  @media (min-width:780px){
+    .dl{grid-template-columns:auto minmax(0,1fr);align-items:center;
+        justify-items:start;text-align:left}
+  }
+  .qr{width:186px;height:186px;padding:10px;background:#fff;border-radius:var(--r-md);
+      display:block;flex:none}
+  .dl-txt{width:100%;max-width:440px}
+  .dl-txt .hint{color:var(--muted);font-size:13px;margin:0 0 16px}
+  .dl-txt .btn{width:100%}
+  .dl-txt .meta{margin:14px 0 0;color:var(--muted);font-size:12.5px}
+
+  /* ---------- 常见问题 ---------- */
+  .faq{display:grid;gap:10px;align-content:start}
+  @media (min-width:900px){.faq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+          padding:0 18px;transition:border-color .18s ease,background .18s ease}
+  details:hover{border-color:var(--line2)}
+  details[open]{background:rgba(255,255,255,.075);border-color:var(--line2)}
+  summary{cursor:pointer;padding:16px 0;font-size:15px;font-weight:600;list-style:none;
+          display:flex;justify-content:space-between;align-items:center;gap:12px}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"＋";float:right;color:var(--brand);font-weight:700}
+  summary::after{content:"＋";color:var(--brand-lt);font-weight:700;flex:none}
   details[open] summary::after{content:"－"}
-  details p{color:var(--muted);font-size:14px;margin:0 0 15px}
-  footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:12.5px;text-align:center}
+  details p{color:var(--muted);font-size:14px;margin:0 0 16px}
+
+  /* ---------- 页脚 ---------- */
+  footer{border-top:1px solid var(--line);margin-top:clamp(24px,4vw,48px);
+         padding:clamp(26px,3.5vw,40px) 0 clamp(34px,4.5vw,52px);
+         color:var(--muted);font-size:12.5px;text-align:center}
   footer p{margin:0 0 8px}
-  @media (max-width:560px){.demo-video{height:min(64vh,540px)}}
-  @media (max-width:380px){h1{font-size:26px}.qr{width:160px;height:160px}
-                           .demo-video{height:min(56vh,440px)}}
+  footer a{text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  /* 小屏收紧一点，别让视频占满整屏 */
+  @media (max-width:520px){
+    /* 两个按纽在窄屏会各占一行，让它们等宽铺满才整齐（一宽一窄很难看） */
+    .cta{flex-direction:column;align-items:stretch}
+    .cta .btn{width:100%}
+  }
+  @media (max-width:400px){
+    :root{--pad:16px}
+    .video-frame{width:min(100%,calc(min(66vh,520px) * 480 / 1056))}
+    .qr{width:160px;height:160px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+    .card:hover,.btn:hover{transform:none}
+  }
 </style>
 </head>
 <body>
 
-<header>
+<header class="hero">
   <div class="wrap">
     <div class="logo">木木</div>
     <h1>木木答题</h1>
     <p class="tag">安全培训随身题库 · 让安全培训刷题变成一件顺手的事</p>
     <div class="badges">
-      <span class="badge">Android 版 1.9.66</span>
+      <span class="badge">Android 版 1.9.67</span>
       <span class="badge">16.4 MB</span>
       <span class="badge">Android 8.0 及以上</span>
+    </div>
+    <div class="cta">
+      <a class="btn" href="http://117.72.105.246:3000/apk/floatingqa-1.9.67.apk">下载安装包 · v1.9.67</a>
+      <a class="btn btn-ghost" href="#demo">先看 3 分钟演示</a>
     </div>
   </div>
 </header>
 
-<div class="wrap">
+<main class="wrap">
 
-  <section>
-    <h2>3 分钟看懂怎么用</h2>
-    <p class="sub">悬浮窗、拍照识别、离线题库 —— 跟着演示走一遍就会。</p>
-    <div class="video-wrap">
-      <video class="demo-video" controls playsinline preload="metadata"
-             controlslist="nodownload" aria-label="木木答题 使用演示">
-        <source src="https://mumu-dati.app.workbuddy.host/how-to-use.mp4" type="video/mp4">
-        你的浏览器不支持内嵌视频，请<a href="https://mumu-dati.app.workbuddy.host/how-to-use.mp4" style="color:var(--brand)">点这里直接观看</a>。
-      </video>
+  <section class="sec" id="demo">
+    <div class="sec-head">
+      <h2>3 分钟看懂怎么用</h2>
+      <p class="sub">悬浮窗、拍照识别、离线题库 —— 打开本页视频就会自动播放，跟着演示走一遍就会。</p>
     </div>
-    <p class="video-meta">首次播放需要联网缓冲几秒；点右下角图标可全屏观看。</p>
+    <div class="demo">
+      <div class="video-frame">
+        <video id="demoVideo" class="demo-video" autoplay muted loop playsinline
+               controls controlslist="nodownload" preload="auto"
+               aria-label="木木答题 使用演示">
+          <source src="https://mumu-dati.app.workbuddy.host/how-to-use.mp4" type="video/mp4">
+          你的浏览器不支持内嵌视频，请<a href="https://mumu-dati.app.workbuddy.host/how-to-use.mp4">点这里直接观看</a>。
+        </video>
+        <p class="video-fallback" id="videoTip" hidden>点一下视频即可开始播放。</p>
+      </div>
+      <div>
+        <h3 class="h3">照着三步就能上手</h3>
+        <ol class="steps">
+          <li><span class="step-n">1</span><span><b>下载并安装</b>扫描下方二维码，或点页面底部的下载按钮。</span></li>
+          <li><span class="step-n">2</span><span><b>打开悬浮窗权限</b>首次启动按提示授权，浮窗就会贴在屏幕上方。</span></li>
+          <li><span class="step-n">3</span><span><b>边看边练</b>做题时浮窗就在旁边，随时翻看、拍照识别看解析。</span></li>
+        </ol>
+        <p class="video-meta">视频默认静音自动播放并循环；点右下角图标可全屏观看。</p>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>能帮你做什么</h2>
-    <p class="sub">贴近班前会、安全培训、日常复习的真实场景，不做发证类考试用途。</p>
+  <section class="sec">
+    <div class="sec-head">
+      <h2>能帮你做什么</h2>
+      <p class="sub">贴近班前会、安全培训、日常复习的真实场景，不做发证类考试用途。</p>
+    </div>
+    <div class="grid g3">
 <div class="card"><h3><span class="num">1</span>悬浮窗随时练</h3><p>题库贴在答题页面上方，做安全的班前会复习、随时翻看，不用在应用之间来回切。</p></div><div class="card"><h3><span class="num">2</span>拍照识别题目</h3><p>遇到没见过的题，直接拍照识别，重点看的是解析思路，不是单个答案。</p></div><div class="card"><h3><span class="num">3</span>离线题库</h3><p>题库已内置在手机里，井下、野外等没有信号的场地照样能练。</p></div>
-  </section>
-
-  <section>
-    <h2>本次更新</h2>
-    <p class="sub">v1.9.66 修复了一些使用上的卡顿。</p>
-    <div class="card">
-      <ul><li>下载进度会显示在手机通知栏，切到别的应用也看得到下载走到哪一步。</li><li>从后台回到 App 会自动弹出安装界面；安装被取消后也能再次点「点击安装」重来。</li><li>修好了下载中途卡住、反复提示失败的情况，已有半截文件会从断点继续下载。</li></ul>
     </div>
   </section>
 
-  <section>
-    <h2>下载</h2>
-    <p class="sub">扫码或点下面的按钮，安装包 16.4 MB，可直接覆盖更新。</p>
+  <section class="sec">
+    <div class="sec-head">
+      <h2>本次更新</h2>
+      <p class="sub">v1.9.67 修复了一些使用上的卡顿。</p>
+    </div>
+    <div class="card">
+      <ul class="notes"><li>下载进度会显示在手机通知栏，切到别的应用也看得到下载走到哪一步。</li><li>从后台回到 App 会自动弹出安装界面；安装被取消后也能再次点「点击安装」重来。</li><li>修好了下载中途卡住、反复提示失败的情况，已有半截文件会从断点继续下载。</li></ul>
+    </div>
+  </section>
+
+  <section class="sec" id="download">
+    <div class="sec-head">
+      <h2>下载</h2>
+      <p class="sub">扫码或点下面的按钮，安装包 16.4 MB，可直接覆盖更新。</p>
+    </div>
     <div class="dl">
       <img class="qr" alt="扫码下载 木木答题" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAHCAQMAAABG1lsGAAAABlBMVEUhAF3///9QTp4xAAAC+ElEQVR42u2cXW6EMAyEo3KAHImr50gcACmFYMd2CKhaVapUfTxsWZrZBzQaj3+SVD+8SgIJEiTI30JuSa51W2pK+Xyc9/Mn9/PpUq+79fijK49n5St9eoH8X8iTQ8vFp4MlSpX1enJ+3YRcbZ38Y4NDIEcONWlpfGnMMfocQqU0K7rkohQcAjnjUAteLYw1qlxfm/Ck6w4OgfyJDjWC5N1FsGEJHAL54odUc8Q/twgmX/FDIF84FPKy9w/yMpAzDtkVXVDRtN6kylcFeLcgBw7tPoJJ7ejMy3q5SPIy+YBDIAdPvVpGf92pAZKSY62aoS3oEMiZDpnPETHSWNZSfXVLJktwCGTk0C7ckOaG+GxnhUqgFBwCOeGQ+pykzQ1zRhrQZElVsw2HQIbc3sRIDHNP4Yd2qytD8m5Bek/tSonF4ltfUpK33XhqkNNYpvWhUCmqvjAt9kgFCg6BHPKy3CuLWadAxj6shTt0COQ9L+sio3FLZckHtO6R8EMg7546EkSUJldN5pP5bDw1yIf6kCqNlIGS9Ff9QOzmp9HgEMibDmkfzCy2DFX3roczT/ghkFMOWVvsyuOdFcrW/0jk9iAfPbWmX34cX0NbSjY/BIdA3nRo8SJTsrBJ261msXc8NcjnWOan7pfOl5impcUPgMAhkC6W+f6qH5uu0RnlWtEhkE8cckNEq2XvnTQlem/8EMi7HxoKjda8F770aqOVi+AQyKhDxU0I+eAVAlo3StSHQE50yDXI/BT1bI8idWqQ07wsbulwY7BmhWwTNZ4a5EyHNFpF5rjp/HHnEO8WZOCQ28PRS0NGqTjWiKcG+ZTbu9ZqCeNnrvhoo45wCGTwQ1IaGvYodmdk8yBucwfvFuQtL9NdiPt0xjrZEBF5Gcg7h5LNTq/Wss/9aL0tIOAQyGcOWdfjtpHDmrFwCOSrDlnLXo9n7KdZ9Z331KlBPvoh3aPoNkz3Ixz8QY3UGEG+5GW+yar1RH9SQyIvA/lWH+IUeJAgQf4B8hvyZeMB8h9znAAAAABJRU5ErkJggg==">
-      <p class="hint">手机长按识别二维码即可打开本页</p>
-      <a class="btn" href="http://117.72.105.246:3000/apk/floatingqa-1.9.66.apk">下载安装包 · v1.9.66</a>
-      <p class="meta">Android 8.0 及以上 · 16.4 MB · 官方直链，无第三方下载站</p>
+      <div class="dl-txt">
+        <p class="hint">手机长按识别二维码即可打开本页</p>
+        <a class="btn" href="http://117.72.105.246:3000/apk/floatingqa-1.9.67.apk">下载安装包 · v1.9.67</a>
+        <p class="meta">Android 8.0 及以上 · 16.4 MB · 官方直链，无第三方下载站</p>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>常见问题</h2>
-    <p class="sub">安装和使用前你可能想知道的事。</p>
-    <details>
-      <summary>装的时候提示「解析失败」怎么办？</summary>
-      <p>先确认安装的是从本页下载的官方包，别从群文件里转发来的版本。如果中途系统把下载中断了，回到本页重新下载一次即可，已下载的部分会自动续传。</p>
-    </details>
-    <details>
-      <summary>没有网络能下载吗？</summary>
-      <p>不能。安装包需要联网下载；但装好之后，题库是内置在手机里的，之后练题不再需要联网。</p>
-    </details>
-    <details>
-      <summary>会读取手机里的其他信息吗？</summary>
-      <p>不会。本应用只在本地保存你的练习记录，不上传通讯录、相册等信息。练习数据属于你的内部培训学习记录。</p>
-    </details>
-    <details>
-      <summary>适合哪些人用？</summary>
-      <p>适合企业安全生产管理人员、班组长以及需要日常复习安全知识的人员做日常练习与复习巩固。</p>
-    </details>
+  <section class="sec">
+    <div class="sec-head">
+      <h2>常见问题</h2>
+      <p class="sub">安装和使用前你可能想知道的事。</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>装的时候提示「解析失败」怎么办？</summary>
+        <p>先确认安装的是从本页下载的官方包，别从群文件里转发来的版本。如果中途系统把下载中断了，回到本页重新下载一次即可，已下载的部分会自动续传。</p>
+      </details>
+      <details>
+        <summary>没有网络能下载吗？</summary>
+        <p>不能。安装包需要联网下载；但装好之后，题库是内置在手机里的，之后练题不再需要联网。</p>
+      </details>
+      <details>
+        <summary>会读取手机里的其他信息吗？</summary>
+        <p>不会。本应用只在本地保存你的练习记录，不上传通讯录、相册等信息。练习数据属于你的内部培训学习记录。</p>
+      </details>
+      <details>
+        <summary>适合哪些人用？</summary>
+        <p>适合企业安全生产管理人员、班组长以及需要日常复习安全知识的人员做日常练习与复习巩固。</p>
+      </details>
+    </div>
   </section>
 
-  <footer>
+</main>
+
+<footer>
+  <div class="wrap">
     <p>木木答题 · 企业内部安全培训与复习辅助工具</p>
     <p>本应用用于内部培训学习记录与日常复习巩固，不用于任何发证类考试场景。</p>
-    <p>当前版本 v1.9.66</p>
-    <p><a href="https://ucdoscced521-sys.github.io/floatingqa-website/" style="color:var(--brand)">ucdoscced521-sys.github.io/floatingqa-website</a></p>
-  </footer>
+    <p>当前版本 v1.9.67</p>
+    <p><a href="https://ucdoscced521-sys.github.io/floatingqa-website/">ucdoscced521-sys.github.io/floatingqa-website</a></p>
+  </div>
+</footer>
 
-</div>
+<script>
+/* 自动播放兜底。
+   正常情况下 <video autoplay muted playsinline> 已经能自己播起来；
+   这里只处理两种「属性写了但没播成」的真实情况：
+     1) 用户的浏览器/系统策略仍然拦截了自动播放 → play() 返回的 Promise 被 reject
+        → 直接把 controls 顶上并显示提示层，用户点一下就能看（而不是黑屏干等）。
+     2) 系统开了「减少动态效果」→ 尊重用户选择，不自动播，交给用户手动点。
+   另外 iOS 旧版只认 JS 赋值的 muted，所以这里再显式设一次。 */
+(function () {
+  var v = document.getElementById("demoVideo");
+  var tip = document.getElementById("videoTip");
+  if (!v) return;
+  v.muted = true;
+  v.defaultMuted = true;
+  function showTip() { if (tip) tip.hidden = false; v.controls = true; }
+  function hideTip() { if (tip) tip.hidden = true; }
+  v.addEventListener("playing", hideTip);
+  if (window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // 只把 autoplay 设成 false 不够：真正的起播是浏览器读到 autoplay 属性后自己发起的，
+    // 不经过这里的 play()，所以要**把属性摘掉**再 pause，双保险才停得下来。
+    v.removeAttribute("autoplay");
+    v.autoplay = false;
+    try { v.pause(); } catch (e) {}
+    showTip();
+    return;
+  }
+  var p = v.play();
+  if (p && typeof p.catch === "function") { p.catch(showTip); }
+})();
+</script>
 </body>
 </html>
