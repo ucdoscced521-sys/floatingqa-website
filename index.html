@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>木木答题 · 安全培训随身题库</title>
+<meta name="description" content="木木答题：面向企业安全培训的随身题库。悬浮窗随时练、拍照识别题目看解析、离线题库不断网也能用。Android 版安装包 1.9.64，16.4 MB。">
+<meta property="og:title" content="木木答题 · 安全培训随身题库">
+<meta property="og:description" content="悬浮窗随时练 / 拍照识别题目看解析 / 离线题库。Android 版 1.9.64 下载。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#21005D">
+<style>
+  :root{--bg:#21005D;--deep:#4F378B;--brand:#6750A4;--line:rgba(234,221,255,.18);
+        --text:#fff;--muted:rgba(255,255,255,.72);--chip:rgba(234,221,255,.12)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(160deg,#6750A4 0%,#4F378B 45%,#21005D 100%);
+         padding:56px 0 72px;text-align:center}
+  .logo{width:72px;height:72px;margin:0 auto 18px;border-radius:20px;
+        background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);
+        display:flex;align-items:center;justify-content:center;
+        font-size:30px;font-weight:700;letter-spacing:2px}
+  h1{margin:0 0 10px;font-size:30px;letter-spacing:1px}
+  .tag{margin:0;color:var(--muted);font-size:15px}
+  .badges{margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{background:var(--chip);border:1px solid var(--line);border-radius:999px;
+         padding:4px 12px;font-size:12.5px;color:var(--text)}
+  section{padding:44px 0}
+  h2{margin:0 0 6px;font-size:20px;display:flex;align-items:center;gap:9px}
+  h2::before{content:"";width:4px;height:18px;border-radius:2px;background:var(--brand)}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 22px}
+  .card{background:rgba(255,255,255,.05);border:1px solid var(--line);
+        border-radius:16px;padding:20px;margin-bottom:14px;backdrop-filter:blur(6px)}
+  .card h3{margin:0 0 7px;font-size:16.5px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+  .num{display:inline-flex;width:21px;height:21px;border-radius:6px;background:var(--brand);
+       font-size:12px;align-items:center;justify-content:center;margin-right:7px;
+       vertical-align:2px;font-weight:700}
+  ul{margin:0;padding-left:20px}
+  li{color:var(--muted);font-size:14.5px;margin-bottom:8px}
+  li::marker{color:var(--brand)}
+  .dl{background:linear-gradient(160deg,rgba(103,80,164,.5),rgba(33,0,93,.6));
+      border:1px solid var(--line);border-radius:18px;padding:28px 20px;text-align:center}
+  .qr{width:186px;height:186px;margin:0 auto 16px;padding:9px;background:#fff;
+      border-radius:14px;display:block}
+  .dl .hint{color:var(--muted);font-size:13px;margin:14px 0 16px}
+  .btn{display:block;background:#fff;color:#21005D;text-decoration:none;font-weight:700;
+       font-size:16px;padding:15px;border-radius:14px;letter-spacing:.5px}
+  .btn:active{transform:scale(.985)}
+  .meta{margin-top:16px;color:var(--muted);font-size:12.5px}
+  details{background:rgba(255,255,255,.05);border:1px solid var(--line);
+          border-radius:14px;padding:0 16px;margin-bottom:10px}
+  summary{cursor:pointer;padding:15px 0;font-size:15px;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";float:right;color:var(--brand);font-weight:700}
+  details[open] summary::after{content:"－"}
+  details p{color:var(--muted);font-size:14px;margin:0 0 15px}
+  footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:12.5px;text-align:center}
+  footer p{margin:0 0 8px}
+  @media (max-width:380px){h1{font-size:26px}.qr{width:160px;height:160px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">木木</div>
+    <h1>木木答题</h1>
+    <p class="tag">安全培训随身题库 · 让安全培训刷题变成一件顺手的事</p>
+    <div class="badges">
+      <span class="badge">Android 版 1.9.64</span>
+      <span class="badge">16.4 MB</span>
+      <span class="badge">Android 8.0 及以上</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>能帮你做什么</h2>
+    <p class="sub">贴近班前会、安全培训、日常复习的真实场景，不做发证类考试用途。</p>
+<div class="card"><h3><span class="num">1</span>悬浮窗随时练</h3><p>题库贴在答题页面上方，做安全的班前会复习、随时翻看，不用在应用之间来回切。</p></div><div class="card"><h3><span class="num">2</span>拍照识别题目</h3><p>遇到没见过的题，直接拍照识别，重点看的是解析思路，不是单个答案。</p></div><div class="card"><h3><span class="num">3</span>离线题库</h3><p>题库已内置在手机里，井下、野外等没有信号的场地照样能练。</p></div>
+  </section>
+
+  <section>
+    <h2>本次更新</h2>
+    <p class="sub">v1.9.64 修复了一些使用上的卡顿。</p>
+    <div class="card">
+      <ul><li>下载完成自动进入安装，切到后台也会继续下载，回到前台接着装。</li><li>下载失败或安装被取消可以直接重试，已有半截文件会从断点续传。</li></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>下载</h2>
+    <p class="sub">扫码或点下面的按钮，安装包 16.4 MB，可直接覆盖更新。</p>
+    <div class="dl">
+      <img class="qr" alt="扫码下载 木木答题" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQMAAAAMyBcgAAAABlBMVEUhAF3///9QTp4xAAACcklEQVR42u1cS7KDMAzzPA7Akbg6R8oBmEmp/8Dqvd1DyiJDC9kEVZZspzJ/P3bhIi7iIqBFQ3xs8zjnVafvzbHMuDFnPLSci37kD4OL/sci0RevQzbFxomIEyjiUFEw5GQPExHvR4T+9k9EfF93oWQEb2yJl42IwEKEGD0oDs4rB4gGESIClCNcM6w6HeLfjYWIwNQRepU4MPXQP1JHYCAivUbjg+dErwGDiNtQFlhnBpFQFM2ycvdejwhPRXzFhLnP1R2GXmkkKY1JRCBEjfb2n54zuOFg1ABSlmk4OnmkBU3KoLJEcp9uMwIHdlevjEESPkQEACK2zFhLqchRYFim1zqoLJE4whyGyQVXkS4l6yN1BIqyvPCBYiOmqocezFniIELWcpo9TEgVPExo0n0i5COSBZqvyASElbuoI8AQ4VnJSFcWH0Thy0FDrwHEEbP1S3lJfHhMsXCyVwsFd+/liJiZu84CaFRBe7qy1CZ37/XKsrrqLBG1h3rwIJI1L0YNGPfZyp6HtI5Ly1ZEAw0RAcMRFTB6PuK4PrqwrgGCCGeGMhyRjRJPXd2zFdw9AERIdse0NFU4kda2T2WJ4jVST87olLj1WfYOK+4egLIcXS60YzzVRSPlP7h7r+cIjwYi0svfFwZxr0EdAcMRjxbL6MCO013kCCiOcJEgUvLy0k3lsKCOgOEIHUUUM8xFu8EzXVDus7LYc+RpzwoTyRF0nyCIMIexXToletNUAoRRAwwRPS8VRS7psGDUwEJE/YVIFDsjUdGPdBARODpiXs50ScSKViZnPgLLawQp1GnPbjPYH4GXj+D/unERF3HRbdEH4XUGFvD1vMIAAAAASUVORK5CYII=">
+      <p class="hint">手机长按识别二维码即可打开本页</p>
+      <a class="btn" href="http://117.72.105.246:3000/apk/floatingqa-1.9.64.apk">下载安装包 · v1.9.64</a>
+      <p class="meta">Android 8.0 及以上 · 16.4 MB · 官方直链，无第三方下载站</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>常见问题</h2>
+    <p class="sub">安装和使用前你可能想知道的事。</p>
+    <details>
+      <summary>装的时候提示「解析失败」怎么办？</summary>
+      <p>先确认安装的是从本页下载的官方包，别从群文件里转发来的版本。如果中途系统把下载中断了，回到本页重新下载一次即可，已下载的部分会自动续传。</p>
+    </details>
+    <details>
+      <summary>没有网络能下载吗？</summary>
+      <p>不能。安装包需要联网下载；但装好之后，题库是内置在手机里的，之后练题不再需要联网。</p>
+    </details>
+    <details>
+      <summary>会读取手机里的其他信息吗？</summary>
+      <p>不会。本应用只在本地保存你的练习记录，不上传通讯录、相册等信息。练习数据属于你的内部培训学习记录。</p>
+    </details>
+    <details>
+      <summary>适合哪些人用？</summary>
+      <p>适合企业安全生产管理人员、班组长以及需要日常复习安全知识的人员做日常练习与复习巩固。</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>木木答题 · 企业内部安全培训与复习辅助工具</p>
+    <p>本应用用于内部培训学习记录与日常复习巩固，不用于任何发证类考试场景。</p>
+    <p>当前版本 v1.9.64</p>
+    <p><a href="https://mumu-dati.app.workbuddy.host/" style="color:var(--brand)">mumu-dati.app.workbuddy.host</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
